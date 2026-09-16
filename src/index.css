@@ -1,218 +1,235 @@
 /* ---------- Design tokens ---------- */
 :root {
-  --bg: #f4f5f7;
-  --surface: #ffffff;
-  --border: #e2e4e8;
-  --text: #1c1f23;
-  --muted: #6b7280;
-  --accent: #2f5bea;
-  --accent-hover: #2349c7;
-  --green: #1e8e3e;
-  --green-soft: #e6f4ea;
-  --gray: #6b7280;
-  --gray-soft: #eef0f2;
-  --red: #d93025;
-  --red-soft: #fce8e6;
-  --radius: 12px;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
-  --shadow-hover: 0 4px 12px rgb(0 0 0 / 0.08);
-  color-scheme: light;
+	--bg: #f4f5f7;
+	--surface: #ffffff;
+	--border: #e2e4e8;
+	--text: #1c1f23;
+	--muted: #6b7280;
+	--accent: #2f5bea;
+	--accent-hover: #2349c7;
+	--green: #1e8e3e;
+	--green-soft: #e6f4ea;
+	--gray: #6b7280;
+	--gray-soft: #eef0f2;
+	--red: #d93025;
+	--red-soft: #fce8e6;
+	--radius: 12px;
+	--shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
+	--shadow-hover: 0 4px 12px rgb(0 0 0 / 0.08);
+	color-scheme: light;
 }
 
 /* ---------- Base ---------- */
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.4;
+	margin: 0;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	line-height: 1.4;
 }
 
 .app {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem 1rem 4rem;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 2.5rem 1rem 4rem;
 }
 
 h1 {
-  margin: 0 0 1.5rem;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
+	margin: 0 0 1.5rem;
+	font-size: 1.75rem;
+	letter-spacing: -0.02em;
 }
 
 /* ---------- Add-product form ---------- */
 .form {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.25rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: flex-start;
+	margin-bottom: 1.5rem;
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  flex: 1 1 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	flex: 1 1 200px;
 }
 
 /* Stack the label text above its input */
 .field label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--muted);
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--muted);
 }
 
 .field input {
-  padding: 0.6rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--text);
-  font: inherit;
-  font-weight: 400;
-  transition: border-color 0.15s, box-shadow 0.15s;
+	padding: 0.6rem 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	background: var(--bg);
+	color: var(--text);
+	font: inherit;
+	font-weight: 400;
+	transition:
+		border-color 0.15s,
+		box-shadow 0.15s;
 }
 
 .field input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 /* Red border when this field is showing an error */
 .field:has(.error) input {
-  border-color: var(--red);
+	border-color: var(--red);
 }
 
 .error {
-  color: var(--red);
-  font-size: 0.8rem;
-  margin: 0;
+	color: var(--red);
+	font-size: 0.8rem;
+	margin: 0;
 }
 
 .form button {
-  /* line up with the inputs, not the labels */
-  margin-top: 1.4rem;
-  padding: 0.6rem 1.4rem;
-  border: 0;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s;
+	/* line up with the inputs, not the labels */
+	margin-top: 1.4rem;
+	padding: 0.6rem 1.4rem;
+	border: 0;
+	border-radius: 8px;
+	background: var(--accent);
+	color: #fff;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s;
 }
 
-.form button:hover { background: var(--accent-hover); }
-.form button:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 2px; }
+.form button:hover {
+	background: var(--accent-hover);
+}
+.form button:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+	outline-offset: 2px;
+}
 
 /* ---------- Toolbar ---------- */
 .toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
 }
 
 .count {
-  font-weight: 700;
-  font-size: 1.05rem;
+	font-weight: 700;
+	font-size: 1.05rem;
 }
 
 .toolbar label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.35rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 0.9rem;
-  cursor: pointer;
-  user-select: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	padding: 0.35rem 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--surface);
+	font-size: 0.9rem;
+	cursor: pointer;
+	user-select: none;
 }
 
 .toolbar label:has(input:checked) {
-  border-color: var(--accent);
-  color: var(--accent);
+	border-color: var(--accent);
+	color: var(--accent);
 }
 
-.toolbar input[type='checkbox'] {
-  accent-color: var(--accent);
-  margin: 0;
-  cursor: pointer;
+.toolbar input[type="checkbox"] {
+	accent-color: var(--accent);
+	margin: 0;
+	cursor: pointer;
 }
 
 .sale-counter {
-  background: var(--red);
-  color: #fff;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
+	background: var(--red);
+	color: #fff;
+	padding: 0.25rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 700;
 }
 
 /* ---------- Product grid ---------- */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: transform 0.15s, box-shadow 0.15s;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	transition:
+		transform 0.15s,
+		box-shadow 0.15s;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-hover);
 }
 
 .card h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 600;
 }
 
 .price {
-  margin: 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+	margin: 0;
+	font-size: 1.35rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
 }
 
 .badge {
-  align-self: flex-start;
-  margin-top: auto; /* pins the badge to the bottom so cards line up */
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
+	align-self: flex-start;
+	margin-top: auto; /* pins the badge to the bottom so cards line up */
+	padding: 0.2rem 0.6rem;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 700;
 }
 
-.badge-in-stock { background: var(--green-soft); color: var(--green); }
-.badge-sold-out { background: var(--gray-soft); color: var(--gray); }
+.badge-in-stock {
+	background: var(--green-soft);
+	color: var(--green);
+}
+.badge-sold-out {
+	background: var(--gray-soft);
+	color: var(--gray);
+}

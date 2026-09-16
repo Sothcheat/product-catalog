@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard.tsx";
-import { initialProducts } from "./products.ts";
 import type { Product, ProductFormData, ProductFormErrors } from "./utils/types.ts";
 import { validateProduct } from "./utils/validateProduct.ts";
 
 function App() {
-	const [products, setProducts] = useState<Product[]>(initialProducts);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [inStockOnly, setInStockOnly] = useState(false);
 	const [form, setForm] = useState<ProductFormData>({ name: "", price: "" });
 	const [errors, setErrors] = useState<ProductFormErrors>({});
+	const [loadError, setLoadError] = useState<string | null>(null);
+
+	useEffect(() => {
+		const fetchProduct = async () => {
+			try {
+				const res = await fetch("/products.json", {
+					headers: { Accept: "application/json" },
+				});
+
+				if (!res.ok) {
+					throw new Error(`HTTP error! status ${res.status}`);
+				}
+				const data: Product[] = await res.json();
+				setProducts(data);
+			} catch (error) {
+				setLoadError(error instanceof Error ? error.message : "Could not load products.");
+			}
+		};
+		fetchProduct();
+	}, []);
 
 	const visibleProducts = inStockOnly ? products.filter((p) => p.inStock) : products;
 	const saleCount = visibleProducts.filter((p) => p.onSale).length;
@@ -34,6 +53,7 @@ function App() {
 			name: form.name.trim(),
 			inStock: true,
 			onSale: false,
+			supplierCost: 0,
 		};
 
 		setProducts((prev) => [...prev, newProduct]);
@@ -76,11 +96,15 @@ function App() {
 				{saleCount > 0 && <span className="sale-counter">{saleCount} on sale</span>}
 			</div>
 
-			<ul className="grid">
-				{visibleProducts.map((product) => (
-					<ProductCard key={product.id} product={product} />
-				))}
-			</ul>
+			{loadError ? (
+				<p className="error">{loadError}</p>
+			) : (
+				<ul className="grid">
+					{visibleProducts.map((product) => (
+						<ProductCard key={product.id} product={product} />
+					))}
+				</ul>
+			)}
 		</main>
 	);
 }
