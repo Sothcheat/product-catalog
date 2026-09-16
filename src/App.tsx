@@ -13,7 +13,7 @@ function App() {
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
-				const res = await fetch("/prodcuts.json", {
+				const res = await fetch("/products.json", {
 					headers: { Accept: "application/json" },
 				});
 
