@@ -75,7 +75,7 @@ function App() {
 				<div className="field">
 					<label htmlFor="price">
 						Price:{" "}
-						<input id="price" type="text" name="prce" value={form.price} onChange={handleChange} />
+						<input id="price" type="text" name="price" value={form.price} onChange={handleChange} />
 					</label>
 					{errors.price && <p className="error">{errors.price}</p>}
 				</div>
