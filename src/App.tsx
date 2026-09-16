@@ -4,7 +4,7 @@ import type { Product, ProductFormData, ProductFormErrors } from "./utils/types.
 import { validateProduct } from "./utils/validateProduct.ts";
 
 function App() {
-	const [products, setProducts] = useState<Product[]>([]);
+	const [products, setProducts] = useState<Product[]>(null as unknown as Product[]);
 	const [inStockOnly, setInStockOnly] = useState(false);
 	const [form, setForm] = useState<ProductFormData>({ name: "", price: "" });
 	const [errors, setErrors] = useState<ProductFormErrors>({});
@@ -13,7 +13,7 @@ function App() {
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
-				const res = await fetch("/products.json", {
+				const res = await fetch("/prodcuts.json", {
 					headers: { Accept: "application/json" },
 				});
 
@@ -75,7 +75,7 @@ function App() {
 				<div className="field">
 					<label htmlFor="price">
 						Price:{" "}
-						<input id="price" type="text" name="price" value={form.price} onChange={handleChange} />
+						<input id="price" type="text" name="prce" value={form.price} onChange={handleChange} />
 					</label>
 					{errors.price && <p className="error">{errors.price}</p>}
 				</div>
