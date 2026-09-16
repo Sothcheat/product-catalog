@@ -4,7 +4,7 @@ import type { Product, ProductFormData, ProductFormErrors } from "./utils/types.
 import { validateProduct } from "./utils/validateProduct.ts";
 
 function App() {
-	const [products, setProducts] = useState<Product[]>(null as unknown as Product[]);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [inStockOnly, setInStockOnly] = useState(false);
 	const [form, setForm] = useState<ProductFormData>({ name: "", price: "" });
 	const [errors, setErrors] = useState<ProductFormErrors>({});
